@@ -52,35 +52,97 @@
             console.log(response)
             }
         });
-
     });
         $("#pk1off").click(function (){
         $(this).css('background-color', 'green');
         $("#pk1on").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk1", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk2on").click(function (){
         $(this).css('background-color', 'green');
         $("#pk2off").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk2", mode: "On"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk2off").click(function (){
         $(this).css('background-color', 'green');
         $("#pk2on").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk2", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk3on").click(function (){
         $(this).css('background-color', 'green');
         $("#pk3off").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk3", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk3off").click(function (){
         $(this).css('background-color', 'green');
         $("#pk3on").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk3", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk4on").click(function (){
         $(this).css('background-color', 'green');
         $("#pk4off").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk4", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#pk4off").click(function (){
         $(this).css('background-color', 'green');
         $("#pk4on").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk4", mode: "Off"},
+            success: function (response){
+            console.log(response)
+            }
+        });
     });
         $("#check").click(function (){
             $.ajax({
