@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Cmera and func</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<style>
+    .mainblock {
+        display: flex;
+        flex-direction: row;
+    }
+    .subblock {
+        display: flex;
+        flex-direction: column;
+        margin-left: 100px;
+        margin-top: 100px;
+    }
+    .button {
+        background-color: red; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .buton:hover {
+        background-color: deepskyblue;
+    }
+    .roz {
+        margin: 30px;
+    }
+
+</style>
+<body>
+
+<script>
+
+    //jquery do sterowania wyjściami
+    $(document).ready(function (){
+        $("#pk1on").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk1off").css('background-color', 'red');
+        $.ajax({
+            url: "/turniping",
+            contentType: "application/json",
+            type: "POST",
+            data: {flag: "pk1", mode: "On"},
+            success: function (response){
+            console.log(response)
+            }
+        });
+
+    });
+        $("#pk1off").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk1on").css('background-color', 'red');
+    });
+        $("#pk2on").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk2off").css('background-color', 'red');
+    });
+        $("#pk2off").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk2on").css('background-color', 'red');
+    });
+        $("#pk3on").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk3off").css('background-color', 'red');
+    });
+        $("#pk3off").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk3on").css('background-color', 'red');
+    });
+        $("#pk4on").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk4off").css('background-color', 'red');
+    });
+        $("#pk4off").click(function (){
+        $(this).css('background-color', 'green');
+        $("#pk4on").css('background-color', 'red');
+    });
+        $("#check").click(function (){
+            $.ajax({
+                url: "/checkall",
+                contentType: "application/json",
+                type: "GET",
+                success: function(response){
+                    console.log(response)
+                    if (response["pk1value"]){
+                        console.log("pk1 wartośc jest true");
+                        $("#pk1on").css('background-color', 'green');
+                        $("#pk1off").css('background-color', 'red');
+                    } else{
+                        $("#pk1on").css('background-color', 'red');
+                        $("#pk1off").css('background-color', 'green');
+                    }
+                    if (response["pk2value"]){
+                        console.log("pk2 wartośc jest true");
+                        $("#pk2on").css('background-color', 'green');
+                        $("#pk2off").css('background-color', 'red');
+                    } else{
+                        $("#pk2on").css('background-color', 'red');
+                        $("#pk2off").css('background-color', 'green');
+                    }
+                    if (response["pk3value"]){
+                        console.log("pk3 wartośc jest true");
+                        $("#pk3on").css('background-color', 'green');
+                        $("#pk3off").css('background-color', 'red');
+                    } else{
+                        $("#pk3on").css('background-color', 'red');
+                        $("#pk3off").css('background-color', 'green');
+                    }
+                    if (response["pk4value"]){
+                        console.log("pk4 wartośc jest true");
+                        $("#pk4on").css('background-color', 'green');
+                        $("#pk4off").css('background-color', 'red');
+                    } else{
+                        $("#pk4on").css('background-color', 'red');
+                        $("#pk4off").css('background-color', 'green');
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+<div class="mainblock">
+    <div>
+    <iframe src="http://192.168.1.69:8081/" width="1280" height="720" title="mynigga"></iframe>
+    </div>
+    <div class="subblock">
+    <div>
+        <button class="button buton" id="check" type="button">Sprawdź stan</button>
+    </div>
+    <div class="roz">
+        <p>Przekaźnik 1 - Napięcie 230V</p>
+        <button class="button" id="pk1on" type="button">Włącz</button>
+        <button class="button" id="pk1off" type="button">Wyłącz</button>
+    </div>
+    <div class="roz">
+        <p>Przekaźnik 2</p>
+        <button class="button" id="pk2on" type="button">Włącz</button>
+        <button class="button" id="pk2off" type="button">Wyłącz</button>
+    </div>
+    <div class="roz">
+        <p>Przekaźnik 3</p>
+        <button class="button" id="pk3on" type="button">Włącz</button>
+        <button class="button" id="pk3off" type="button">Wyłącz</button>
+    </div>
+    <div class="roz">
+        <p>Przekaźnik 4</p>
+        <button class="button" id="pk4on" type="button">Włącz</button>
+        <button class="button" id="pk4off" type="button">Wyłącz</button>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+
+
