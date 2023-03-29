@@ -1,6 +1,7 @@
 from mainblock import app
 from flask import render_template, jsonify, request
-from mainblock.controlgpio import true_dict, check_status, pk1, pk2, pk3, pk4
+from mainblock.controlgpio import true_dict #, check_status, pk1, pk2, pk3, pk4
+import numpy as np
 
 
 @app.route('/')
@@ -29,3 +30,11 @@ def pin_action():
         pk4(mode)
 
     return "Zrobione!"
+
+
+@app.route('/test', methods=['GET', 'POST'])
+def testowe():
+    print("jestesmy tu")
+    data = np.random.rand()
+    print(data)
+    return str(data)

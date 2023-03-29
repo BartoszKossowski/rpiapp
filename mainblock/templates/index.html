@@ -32,14 +32,43 @@
     .roz {
         margin: 30px;
     }
+    .temp {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .opt {
+        margin-left: 30px;
+    }
 
 </style>
 <body>
 
 <script>
 
+    $(function (){
+            window.setInterval(function (){
+                checktemp()
+            }, 1000)
+        });
+
+        function checktemp() {
+            $.ajax({
+                url: '/test',
+                type: 'GET',
+                contentType: 'application/text',
+                success: function (data){
+                    let newp = `<p id="settemp">`+ data + `</p>`
+                    $('#settemp').replaceWith(newp);
+                    console.log(data)
+                }
+            });
+        }
+
+
     //jquery do sterowania wyjściami
     $(document).ready(function (){
+
+
         $("#pk1on").click(function (){
         $(this).css('background-color', 'green');
         $("#pk1off").css('background-color', 'red');
@@ -99,7 +128,7 @@
             url: "/turniping",
             contentType: "application/json",
             type: "GET",
-            data: {flag: "pk3", mode: "Off"},
+            data: {flag: "pk3", mode: "On"},
             success: function (response){
             console.log(response)
             }
@@ -125,7 +154,7 @@
             url: "/turniping",
             contentType: "application/json",
             type: "GET",
-            data: {flag: "pk4", mode: "Off"},
+            data: {flag: "pk4", mode: "On"},
             success: function (response){
             console.log(response)
             }
@@ -195,8 +224,9 @@
     <iframe src="http://192.168.1.69:8081/" width="1280" height="720" title="mynigga"></iframe>
     </div>
     <div class="subblock">
-    <div>
+    <div class="temp">
         <button class="button buton" id="check" type="button">Sprawdź stan</button>
+        <p class="opt" id="settemp">asdasd</p>
     </div>
     <div class="roz">
         <p>Przekaźnik 1 - Napięcie 230V</p>
