@@ -15,7 +15,7 @@ def check():
 
 
 @app.route('/turniping', methods=['GET', 'POST'])
-def pin_on():
+def pin_action():
     flag = request.args.get('flag')
     mode = request.args.get('mode')
 
